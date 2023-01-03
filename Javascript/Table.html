@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      width: 100%;
+      text-align: center;
+    }
+    table, th, td {
+      border: 1px solid darkslategray;
+      border-collapse: collapse;
+      padding: 2px;
+    }
+
+    tr:hover{
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+      table>tr*4>td*4 
+      ctrl-shift-alt 누른 상태에서 화살표 key 이용하면 열편집 td -> th
+      ** css 는 하나씩 추가해 가면서 이렇게 테이블이 변화된다는 정도만 설명
+    -->
+  <table>
+    <thead>
+      <tr>
+        <th>isbn</th>
+        <th>도서명</th>
+        <th>저자</th>
+        <th>가격</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1111</td>
+        <td>HTML</td>
+        <td>홍길동</td>
+        <td>10000</td>
+      </tr>
+      <tr>
+        <td>2222</td>
+        <td>CSS</td>
+        <td>이길동</td>
+        <td>20000</td>
+      </tr>
+      <tr>
+        <td>3333</td>
+        <td>Javascript</td>
+        <td>삼길동</td>
+        <td>30000</td>
+      </tr>
+    </tbody>
+
+  </table>
+  <button onclick="addRow();">addrow</button>
+  <script>
+
+
+                // tr.innerHTML =
+                //     `<tr class="sale">
+                //         <td>4</td><td>삼겹살</td><td class="price" data-price="25000" discount="100">25000</td>
+                //     </tr>`;
+
+      function addRow(){
+
+        let tr = document.createElement("tr");
+        tr.innerHTML = 
+          `
+            <tr>
+              <td>4444</td>
+              <td>Javascript</td>
+              <td>사길동</td>
+              <td>30000</td>
+            </tr>
+          `
+        document.querySelector("tbody").append(tr);
+      }
+
+
+        // document.querySelectorAll("tr").forEach( tr => tr.addEventListener(
+        //   "mouseover",
+        //   function(e){
+        //     e.target.parentElement.style.backgroundColor = "blue";
+        //   }
+        // ));
+
+
+        // document.querySelectorAll("tr").forEach( tr => tr.addEventListener(
+        //   "mouseout",
+        //   function(e){
+        //     e.target.parentElement.style.backgroundColor = "white";
+        //   }
+        // ));
+  </script>
+</body>
+</html>

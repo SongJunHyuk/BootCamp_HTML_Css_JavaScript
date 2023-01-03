@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Function</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name:'111',
+            fun: () =>  { 
+                console.log(this)
+                console.log(this.name)}
+        }
+        obj.fun();
+
+        const myFunc2 = () => {
+            var aaa = 10;
+            aaa++;
+            return aaa;
+        }
+
+        console.log( myFunc2() )
+
+        // advanced / firstClassFunction.html 도 참고
+
+        // normal
+        function add_1( a, b ){
+            return a + b;
+        }
+
+        // anonymous with variable
+        var add_2 = function( a, b ){
+            return a + b;
+        }
+
+        // with new
+        var add_3 = new Function( 'a', 'b', 'return a + b' );
+
+        console.log( add_1( 10, 20 ) );
+        console.log( add_2( 30, 40 ) );
+        console.log( add_3( 50, 60 ) );
+
+        // as parameter
+        function add_4( a, b, func ){
+            let ret = func(a, b);
+            return ret;
+        }
+        // 아래와 같이 fallback 으로 활용 가능 설명
+        // function add_4( a, b, func1, func2 ){
+        //     // 서버 요청
+        //     // 결과 정상 - func1
+        //     // 결과 오류 - func2
+        //     let ret = func( a, b );
+        //     return ret;
+        // }
+
+        console.log( add_4(20, 40, add_2) ); // add_1, add_2, add_3 모두 가능
+
+        // as return 
+        function myFunc(){
+            // #1
+            const add_5 = function( a, b ){
+                return a + b;
+            }
+            return add_5;
+            // #2
+            // return function( a, b ){
+            //     return a + b;
+            // }
+        }
+
+        const add_param = myFunc();
+        console.log( add_param(20, 100));
+
+        // 일급 객체 (first class object 변수에 할당, 파라미터, 리턴 3가지 만족)
+    </script>
+</body>
+</html>
